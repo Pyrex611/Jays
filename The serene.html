@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serene Hotel | Organic Luxury Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #264653;
+            --primary-medium: #2a9d8f;
+            --secondary-light: #e9c46a;
+            --secondary-medium: #f4a261;
+            --accent-coral: #e76f51;
+            --accent-pink: #f28482;
+            --accent-light-pink: #ffafcc;
+            --white: #f8f9fa;
+            --off-white: #f1faee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--off-white);
+            color: var(--primary-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .curved-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%);
+            border-radius: 0 0 50% 50% / 0 0 30% 30%;
+            transform: scale(1.1);
+        }
+
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+        }
+
+        .wave-divider .shape-fill {
+            fill: var(--off-white);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-family: 'Cormorant', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        header.scrolled .logo {
+            color: var(--primary-dark);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary-light);
+            border-radius: 10px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        header.scrolled nav a {
+            color: var(--primary-dark);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-light);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .book-btn {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 0.7rem 1.5rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header.scrolled .book-btn {
+            color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        header.scrolled .book-btn::before {
+            background: var(--primary-dark);
+        }
+
+        .book-btn:hover {
+            color: var(--primary-dark);
+        }
+
+        header.scrolled .book-btn:hover {
+            color: var(--white);
+        }
+
+        .book-btn:hover::before {
+            left: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 1;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            background: var(--secondary-light);
+            color: var(--primary-dark);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Organic Shape Elements */
+        .organic-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-light);
+            top: 10%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-pink);
+            bottom: 20%;
+            right: 10%;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--accent-coral);
+            top: 40%;
+            right: 20%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-medium);
+            border-radius: 10px;
+        }
+
+        /* Rooms Section */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            clip-path: ellipse(100% 100% at 50% 0%);
+        }
+
+        .room-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .room-name {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .room-details {
+            padding: 1.5rem;
+        }
+
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .feature {
+            background: var(--off-white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .room-price {
+            font-family: 'Cormorant', serif;
+            font-size: 1.5rem;
+            color: var(--accent-coral);
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+
+        .book-room-btn {
+            background: var(--primary-medium);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-room-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .book-room-btn:hover::before {
+            left: 100%;
+        }
+
+        .book-room-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Amenities Section */
+        .amenities {
+            background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: -50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .amenity-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-light);
+        }
+
+        .amenity-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Location Section */
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-medium);
+        }
+
+        .location-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .location-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .location-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .location-feature i {
+            color: var(--accent-coral);
+            font-size: 1.2rem;
+        }
+
+        .location-map {
+            height: 400px;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            clip-path: ellipse(85% 100% at 50% 50%);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+            margin-top: 50px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-light);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-light);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0a0a0;
+        }
+
+        /* AI Chat Integration */
+        .ai-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .chat-bubble:hover {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+        }
+
+        .chat-bubble i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transform-origin: bottom right;
+            animation: scaleIn 0.3s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .chat-header {
+            padding: 1rem;
+            background: var(--primary-medium);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .chat-header h3 {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            padding: 0.8rem;
+            border-radius: 18px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ai-message {
+            background: var(--off-white);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .user-message {
+            background: var(--primary-medium);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background: var(--off-white);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
+            color: var(--primary-dark);
+            font-family: 'Nunito', sans-serif;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: var(--primary-medium);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            margin-left: 0.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .chat-window {
+                width: 300px;
+                right: -20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Organic Shape Elements -->
+    <div class="organic-shape shape-1"></div>
+    <div class="organic-shape shape-2"></div>
+    <div class="organic-shape shape-3"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">The Serene</div>
+        <nav>
+            <ul>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="book-btn">Book Now</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="curved-bg"></div>
+        <div class="hero-content">
+            <h1>Where Organic Design Meets Tranquil Luxury</h1>
+            <p>Experience the seamless flow of our fluid architecture, where every curve is designed to create harmony and peace.</p>
+            <button class="cta-btn">Discover Our World</button>
+        </div>
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms">
+        <div class="section-title">
+            <h2>Curated Rooms</h2>
+        </div>
+        <div class="rooms-grid">
+            <div class="room-card">
+                <div class="room-img" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="room-overlay">
+                        <h3 class="room-name">Harmony Suite</h3>
+                    </div>
+                </div>
+                <div class="room-details">
+                    <p>Designed with flowing curves and organic shapes to create a truly serene environment.</p>
+                    <div class="room-features">
+                        <span class="feature">King Bed</span>
+                        <span class="feature">Garden View</span>
+                        <span class="feature">Organic Materials</span>
+                    </div>
+                    <div class="room-price">$299/night</div>
+                    <button class="book-room-btn">Book Now</button>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-img" style="background-image: url('https://images.unsplash.com/photo-1582582621959-48d27397dc69?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');">
+                    <div class="room-overlay">
+                        <h3 class="room-name">Flow Room</h3>
+                    </div>
+                </div>
+                <div class="room-details">
+                    <p>Experience seamless transitions between spaces in this beautifully curved room.</p>
+                    <div class="room-features">
+                        <span class="feature">Queen Bed</span>
+                        <span class="feature">Pool View</span>
+                        <span class="feature">Natural Light</span>
+                    </div>
+                    <div class="room-price">$249/night</div>
+                    <button class="book-room-btn">Book Now</button>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-img" style="background-image: url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80');">
+                    <div class="room-overlay">
+                        <h3 class="room-name">Serenity Loft</h3>
+                    </div>
+                </div>
+                <div class="room-details">
+                    <p>Our most organic space with curved walls and seamless transitions between areas.</p>
+                    <div class="room-features">
+                        <span class="feature">King Bed</span>
+                        <span class="feature">Private Terrace</span>
+                        <span class="feature">Spa Bath</span>
+                    </div>
+                    <div class="room-price">$399/night</div>
+                    <button class="book-room-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities">
+        <div class="section-title">
+            <h2>Fluid Amenities</h2>
+        </div>
+        <div class="amenities-grid">
+            <div class="amenity-card">
+                <div class="amenity-icon">🌿</div>
+                <h3>Organic Spa</h3>
+                <p>Experience treatments in our curved relaxation spaces with seamless transitions.</p>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon">🍃</div>
+                <h3>Flow Restaurant</h3>
+                <p>Dine in our organically shaped dining area with garden views.</p>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon">💧</div>
+                <h3>Curved Pool</h3>
+                <p>Swim in our free-form pool with organic shapes and natural surroundings.</p>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon">🧘</div>
+                <h3>Harmony Yoga</h3>
+                <p>Practice in our circular studio with seamless flow between poses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <div class="section-title">
+            <h2>Natural Location</h2>
+        </div>
+        <div class="location-content">
+            <div class="location-text">
+                <h3>Nestled In Organic Beauty</h3>
+                <p>Our hotel is situated in a naturally curved valley, surrounded by flowing hills and organic landscapes that mirror our architectural philosophy.</p>
+                <p>The location was specifically chosen for its seamless integration with nature and the fluid transitions between different natural environments.</p>
+                <div class="location-features">
+                    <div class="location-feature">
+                        <i>📍</i>
+                        <span>15 min to natural reserves</span>
+                    </div>
+                    <div class="location-feature">
+                        <i>📍</i>
+                        <span>Walking trails from property</span>
+                    </div>
+                    <div class="location-feature">
+                        <i>📍</i>
+                        <span>30 min to airport</span>
+                    </div>
+                    <div class="location-feature">
+                        <i>📍</i>
+                        <span>Organic farm nearby</span>
+                    </div>
+                </div>
+            </div>
+            <div class="location-map">
+                <!-- Map placeholder -->
+                <div style="width:100%;height:100%;background:var(--off-white);display:flex;align-items:center;justify-content:center;">
+                    <p style="color:var(--primary-medium);">Interactive Map Location</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>THE SERENE HOTEL</h3>
+                <p>Experience the harmony of fluid architecture and organic design in our truly unique hotel environment.</p>
+                <div class="social-links">
+                    <a href="#"><i>📱</i></a>
+                    <a href="#"><i>📸</i></a>
+                    <a href="#"><i>🐦</i></a>
+                    <a href="#"><i>💼</i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#rooms">Rooms & Suites</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Wellness Programs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>123 Harmony Way</li>
+                    <li>Serene Valley, SV 12345</li>
+                    <li>reservations@serenehotel.com</li>
+                    <li>+1 (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 The Serene Hotel. All rights reserved. | Designed with organic flow</p>
+        </div>
+    </footer>
+
+    <!-- AI Chat Integration -->
+    <div class="ai-chat">
+        <div class="chat-bubble">
+            <i>💬</i>
+        </div>
+        <div class="chat-window">
+            <div class="chat-header">
+                <h3>Serene Concierge</h3>
+                <button class="close-chat">✕</button>
+            </div>
+            <div class="chat-messages">
+                <div class="message ai-message">
+                    Welcome to The Serene Hotel. How can I help you find peace and harmony today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // AI Chat Toggle
+        const chatBubble = document.querySelector('.chat-bubble');
+        const chatWindow = document.querySelector('.chat-window');
+        const closeChat = document.querySelector('.close-chat');
+        
+        chatBubble.addEventListener('click', function() {
+            chatWindow.style.display = 'flex';
+        });
+        
+        closeChat.addEventListener('click', function() {
+            chatWindow.style.display = 'none';
+        });
+        
+        // Chat functionality
+        const chatInput = document.querySelector('.chat-input input');
+        const chatSend = document.querySelector('.chat-input button');
+        const chatMessages = document.querySelector('.chat-messages');
+        
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'ai-message');
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        chatSend.addEventListener('click', function() {
+            if (chatInput.value.trim() !== '') {
+                addMessage(chatInput.value, true);
+                
+                // Simulate AI response
+                setTimeout(function() {
+                    const responses = [
+                        "I can help you with room reservations, spa bookings, or local organic experiences.",
+                        "Our check-in time is 3:00 PM and check-out is 11:00 AM.",
+                        "We offer complimentary yoga classes every morning at 7:00 AM in our harmony studio.",
+                        "The organic restaurant is open from 7:00 AM to 10:00 PM daily.",
+                        "Would you like me to assist with booking a room or wellness treatment?"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse, false);
+                }, 1000);
+                
+                chatInput.value = '';
+            }
+        });
+        
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                chatSend.click();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
